@@ -17,7 +17,9 @@ function generateGrid(gridSize) {
 generateGrid(16);
 
 grid.addEventListener("mouseover", (e) => {
-    e.target.style.backgroundColor = "black";
+    if (e.target.className === "grid-div") {
+        e.target.style.backgroundColor = "black";
+    }
 });
 
 const girdSizeButton = document.querySelector("#grid-size-btn");
