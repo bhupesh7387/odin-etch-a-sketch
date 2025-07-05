@@ -17,8 +17,21 @@ function generateGrid(gridSize) {
 generateGrid(16);
 
 grid.addEventListener("mouseover", (e) => {
-    if (e.target.className === "grid-div") {
-        e.target.style.backgroundColor = "black";
+    if (e.target.classList.contains("grid-div")) {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+
+        if (!e.target.classList.contains("changed")) {
+            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            e.target.classList.add("changed");
+            e.target.style.opacity = 0.1;
+        } else {
+            let currentOpacity = parseFloat(e.target.style.opacity) || 0;
+            if (currentOpacity < 1) {
+                e.target.style.opacity = currentOpacity + 0.1;
+            }
+        }
     }
 });
 
